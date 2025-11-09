@@ -9,21 +9,29 @@ public class CodedexToDoList {
         function addTask() {
           const task = inputBox.value.trim();
             if (!task) {
-               alert("Please write down a task");
+                alert("Please write down a task");
             return;
+            }
+
+              li.innerHTML = `
+              <label>
+              <input type="checkbox">
+              <span>${task}</span>
+              </label>
+              <span class="edit-btn">Edit</span>
+              <span class="delete-btn">Delete</span>
+              `;
+
+              listContainer.appendChild(li);
+              inputBox.value = "";
         }
-
-  li.innerHTML = `
-    <label>
-      <input type="checkbox">
-      <span>${task}</span>
-    </label>
-    <span class="edit-btn">Edit</span>
-    <span class="delete-btn">Delete</span>
-    `;
-
-  listContainer.appendChild(li);
-  inputBox.value = "";
-}
+            const checkbox = li.querySelector("input");
+            const editBtn = li.querySelector(".edit-btn");
+            const taskSpan = li.querySelector("span");
+            const deleteBtn = li.querySelector(".delete-btn");
+            
+            checkbox.addEventListener("click", function () {
+                li.classList.toggle("completed", checkbox.checked);
+});
     }
 }
